@@ -2,6 +2,7 @@ import requests
 import re
 import pyperclip
 from bs4 import BeautifulSoup
+import streamlit as st
 
 #  指定のPubmedアドレスからURLを抽出。number_urlで抽出する数を選択可能
 def Pubmed_URL_extraction (url, number_url=10):
