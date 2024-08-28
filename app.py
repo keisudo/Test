@@ -46,9 +46,16 @@ def get_contents (url):
 
   return(f"Title: {title} \nAbstract: {abstract_stripped}")
 
-# trending articleからURL抽出
-url_trend = "https://pubmed.ncbi.nlm.nih.gov/trending/"
-pubmed_url_list = Pubmed_URL_extraction(url_trend)
+#検索ワードからURLを生成
+search_word = input("TrendingArticleの場合はTAと入力")
+if search_word == "TA":
+  url = "https://pubmed.ncbi.nlm.nih.gov/trending/"
+else:
+  search_word = search_word.replace(" ","+")
+  url = f"https://pubmed.ncbi.nlm.nih.gov/?term={search_word}&sort=pubdate"
+
+# articleのURL抽出
+pubmed_url_list = Pubmed_URL_extraction(url)
 
 # get_content使ってスクレイピングして一つの文字列に成形
 GPT_input = ""
